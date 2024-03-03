@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/registrasi', [SantriController::class, 'create'])->name('santri-registrasi');
-Route::post('/registrasi', [SantriController::class, 'store'])->name('santri-registrasi.store');
+Route::get('/daftar', [SantriController::class, 'create'])->name('santri-daftar');
+Route::post('/daftar', [SantriController::class, 'store'])->name('santri-daftar.store');

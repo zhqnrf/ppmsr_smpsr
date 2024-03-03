@@ -10,7 +10,9 @@ class SantriController extends Controller
     public function create()
     {
         session(['start' => 'down']);
-        return view('pages.users.daftar.daftar')->with('pageTitle', 'Registrasi');
+        return view('pages.users.daftar.daftar')->with('htmlStart', [
+            'bs-icons' => true
+        ]);
     }
 
     public function store(Request $request)
@@ -23,16 +25,16 @@ class SantriController extends Controller
             'anak_ke' => 'required|integer',
             'jumlah_saudara' => 'required|integer',
             'no_hp_santri' => 'required|string|max:20',
-            'email_santri' => 'required|email|unique:santris,santri_email',
+            'email_santri' => 'required|email|unique:santris,email_santri',
             'orang_pembayar_sekolah' => 'required|string',
             'kartu_keluarga' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'nama_ayah' => 'required|string|max:255',
+            'ayah_kandung' => 'required|string|max:255',
             'status_ayah' => 'required|in:masih hidup,sudah meninggal',
             'pendidikan_ayah' => 'required|in:SD,SLTP,SLTA/Sederajat,D1,D2,D3,Sarjana/D4,S2,S3',
             'pekerjaan_ayah' => 'required|string|max:255',
             'penghasilan_ayah' => 'required|integer',
             'no_hp_ayah' => 'required|string|max:20',
-            'nama_ibu' => 'required|string|max:255',
+            'ibu_kandung' => 'required|string|max:255',
             'status_ibu' => 'required|in:masih hidup,sudah meninggal',
             'pendidikan_ibu' => 'required|in:SD,SLTP,SLTA/Sederajat,D1,D2,D3,Sarjana/D4,S2,S3',
             'no_hp_ibu' => 'required|string|max:20',
@@ -46,15 +48,15 @@ class SantriController extends Controller
 
         // Upload Kartu Keluarga
         $kartuKeluargaName = time() . '_' . $request->file('kartu_keluarga')->getClientOriginalName();
-        $request->file('kartu_keluarga')->move(asset('storage/kk/'), $kartuKeluargaName);
+        $request->file('kartu_keluarga')->move(storage_path('/app/kk/'), $kartuKeluargaName);
 
         // Upload Surat Sambung
         $suratSambungName = time() . '_' . $request->file('surat_sambung')->getClientOriginalName();
-        $request->file('surat_sambung')->move(asset('storage/surat_sambung/'), $suratSambungName);
+        $request->file('surat_sambung')->move(storage_path('/app/surat_sambung/'), $suratSambungName);
 
         // Upload KTP
         $ktpName = time() . '_' . $request->file('ktp')->getClientOriginalName();
-        $request->file('ktp')->move(asset('storage/ktp/'), $ktpName);
+        $request->file('ktp')->move(storage_path('/app/ktp/'), $ktpName);
 
         // Buat objek Santri
         $santri = new Santri([
@@ -67,13 +69,13 @@ class SantriController extends Controller
             'email_santri' => $validatedData['email_santri'],
             'orang_pembayar_sekolah' => $validatedData['orang_pembayar_sekolah'],
             'kartu_keluarga' => $kartuKeluargaName,
-            'nama_ayah' => $validatedData['nama_ayah'],
+            'ayah_kandung' => $validatedData['ayah_kandung'],
             'status_ayah' => $validatedData['status_ayah'],
             'pendidikan_ayah' => $validatedData['pendidikan_ayah'],
             'pekerjaan_ayah' => $validatedData['pekerjaan_ayah'],
             'penghasilan_ayah' => $validatedData['penghasilan_ayah'],
             'no_hp_ayah' => $validatedData['no_hp_ayah'],
-            'nama_ibu' => $validatedData['nama_ibu'],
+            'ibu_kandung' => $validatedData['ibu_kandung'],
             'status_ibu' => $validatedData['status_ibu'],
             'pendidikan_ibu' => $validatedData['pendidikan_ibu'],
             'no_hp_ibu' => $validatedData['no_hp_ibu'],
