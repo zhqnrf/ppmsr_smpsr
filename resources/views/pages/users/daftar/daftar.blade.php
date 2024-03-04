@@ -55,7 +55,9 @@
                             <div class="form-group">
                                 <label for="nama" class="required">Nama:</label>
                                 <input type="text" class="form-control" id="nama" name="nama" required
-                                    onkeydown="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)" autofocus>
+                                    onkeydown="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)"
+                                    onchange="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)"
+                                    onkeyup="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)" autofocus>
                             </div>
 
                             <!-- Tanggal Masuk Pondok -->
@@ -69,7 +71,9 @@
                             <div class="form-group">
                                 <label for="cita_cita" class="required">Cita-cita:</label>
                                 <input type="text" class="form-control" id="cita_cita" name="cita_cita" required
-                                    onkeydown="validateInput(this, /^[a-zA-Z.,\s]+$/, 0, 255)">
+                                    onkeydown="validateInput(this, /^[a-zA-Z.,\s]+$/, 0, 255)"
+                                    onkeyup="validateInput(this, /^[a-zA-Z.,\s]+$/, 0, 255)"
+                                    onchange="validateInput(this, /^[a-zA-Z.,\s]+$/, 0, 255)">
                             </div>
 
                             <div class="row row-cols-sm-2 ">
@@ -79,7 +83,7 @@
                                     <input type="number" class="form-control" id="jumlah_saudara" name="jumlah_saudara"
                                         required aria-describedby="jumlah_saudara-help" max="20"
                                         onkeydown="jumlahSaudaraCheck(this)" onkeyup="jumlahSaudaraCheck(this)"
-                                        onblur="jumlahSaudaraCheck(this)" ry-target="#anak_ke">
+                                        onchange="jumlahSaudaraCheck(this)" ry-target="#anak_ke">
                                     <small id="jumlah_saudara-help" class="text-muted">Dihitung beserta kamu
                                         juga</small>
                                 </div>
@@ -89,7 +93,7 @@
                                     <label for="anak_ke" class="required">Anak Ke-:</label>
                                     <input type="number" class="form-control" id="anak_ke" name="anak_ke" required
                                         max="20" onkeyup="anak_keCheck(this)" onkeydown="anak_keCheck(this)"
-                                        disabled ry-from="#jumlah_saudara">
+                                        onchange="anak_keCheck(this)" disabled ry-from="#jumlah_saudara">
                                 </div>
                             </div>
 
@@ -100,7 +104,8 @@
                                     <span class="input-group-text">+62</span>
                                     <input type="number" class="form-control" id="no_hp_santri" name="no_hp_santri"
                                         required aria-describedby="no.hp-help" placeholder="8########"
-                                        onkeydown="phoneNumberCheck(this)" onkeyup="phoneNumberCheck(this)">
+                                        onkeydown="phoneNumberCheck(this)" onkeyup="phoneNumberCheck(this)"
+                                        onchange="phoneNumberCheck(this)">
                                 </div>
                                 <small id="no.hp_ibu-help" class="text-muted">Langsung tulis tanpa 62/+62 ataupun 0
                                     didepan</small>
@@ -122,14 +127,18 @@
                                     santri:</label>
                                 <input type="text" class="form-control" id="orang_pembayar_sekolah"
                                     name="orang_pembayar_sekolah"
-                                    onkeydown="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)">
+                                    onkeydown="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)"
+                                    onkeyup="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)"
+                                    onchange="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)">
                             </div>
 
                             <!-- Nama Ayah -->
                             <div class="form-group">
                                 <label for="ayah_kandung"class="required">Ayah Kandung:</label>
                                 <input type="text" class="form-control" id="ayah_kandung" name="ayah_kandung"
-                                    required onkeydown="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)">
+                                    required onkeydown="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)"
+                                    onkeyup="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)"
+                                    onchange="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)">
                             </div>
 
                             <div class="row row-gap-4">
@@ -166,7 +175,9 @@
                                     <label for="pekerjaan_ayah"class="required">Pekerjaan Utama Ayah:</label>
                                     <input type="text" class="form-control" id="pekerjaan_ayah"
                                         name="pekerjaan_ayah" required
-                                        onkeydown="validateInput(this, /^[a-zA-Z.,\s]+$/, 0, 255)">
+                                        onkeydown="validateInput(this, /^[a-zA-Z.,\s]+$/, 0, 255)"
+                                        onkeyup="validateInput(this, /^[a-zA-Z.,\s]+$/, 0, 255)"
+                                        onchange="validateInput(this, /^[a-zA-Z.,\s]+$/, 0, 255)">
                                 </div>
                                 <!-- Penghasilan Rata-rata per Bulan Ayah -->
                                 <div class="form-group col-md-6">
@@ -175,7 +186,10 @@
                                         <span class="input-group-text">Rp.</span>
                                         <input type="text" class="form-control" id="penghasilan_ayah"
                                             onkeydown="currencyCheck(this)" onkeyup="currencyCheck(this)"
-                                            onkeydown="validateInput(this,/^[0-9]+$/,7,14)">
+                                            onchange="currencyCheck(this)"
+                                            onkeydown="validateInput(this,/^[0-9]+$/,7,14)"
+                                            onkeyup="validateInput(this,/^[0-9]+$/,7,14)"
+                                            onchange="validateInput(this,/^[0-9]+$/,7,14)">
                                         <input type="number" class="form-control" name="penghasilan_ayah" required
                                             hidden max="99999999999">
                                     </div>
@@ -190,7 +204,8 @@
                                     <span class="input-group-text">+62</span>
                                     <input type="number" class="form-control" id="no_hp_ayah" name="no_hp_ayah"
                                         required aria-describedby="no.hp_ayah-help" placeholder="8########"
-                                        onkeydown="phoneNumberCheck(this)" onkeyup="phoneNumberCheck(this)">
+                                        onkeydown="phoneNumberCheck(this)" onkeyup="phoneNumberCheck(this)"
+                                        onchange="phoneNumberCheck(this)">
                                 </div>
                                 <small id="no.hp_ayah-help" class="text-muted">Langsung tulis tanpa 62/+62 ataupun 0
                                     didepan</small>
@@ -200,7 +215,9 @@
                             <div class="form-group">
                                 <label for="ibu_kandung"class="required">Ibu Kandung:</label>
                                 <input type="text" class="form-control" id="ibu_kandung" name="ibu_kandung"
-                                    required onkeydown="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)">
+                                    required onkeydown="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)"
+                                    onkeyup="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)"
+                                    onchange="validateInput(this, /^[a-zA-Z.\s\`]+$/, 0, 255)">
                             </div>
 
                             <div class="row row-gap-4">
@@ -239,7 +256,8 @@
                                     <span class="input-group-text">+62</span>
                                     <input type="number" class="form-control" id="no_hp_ibu" name="no_hp_ibu"
                                         required aria-describedby="no.hp_ibu-help" placeholder="8########"
-                                        onkeydown="phoneNumberCheck(this)" onkeyup="phoneNumberCheck(this)">
+                                        onkeydown="phoneNumberCheck(this)" onkeyup="phoneNumberCheck(this)"
+                                        onchange="phoneNumberCheck(this)">
                                 </div>
                                 <small id="no.hp_ibu-help" class="text-muted">Langsung tulis tanpa 62/+62 ataupun 0
                                     didepan</small>
@@ -249,7 +267,9 @@
                             <div class="form-group">
                                 <label for="alamat_orangtua"class="required">Alamat Tinggal Orangtua:</label>
                                 <textarea class="form-control" id="alamat_orangtua" name="alamat_orangtua" rows="3" required
-                                    placeholder="Masukkan alamat sesuai KTP" onkeydown="validateInput(this, /^[a-zA-Z0-9,.\(\)\/\-\`\s]+$/, 0, 2000)"></textarea>
+                                    placeholder="Masukkan alamat sesuai KTP" onkeydown="validateInput(this, /^[a-zA-Z0-9,.\(\)\/\-\`\s]+$/, 0, 2000)"
+                                    onkeyup="validateInput(this, /^[a-zA-Z0-9,.\(\)\/\-\`\s]+$/, 0, 2000)"
+                                    onchange="validateInput(this, /^[a-zA-Z0-9,.\(\)\/\-\`\s]+$/, 0, 2000)"></textarea>
                             </div>
 
                             <!-- Status Kepemilikan Rumah -->
@@ -279,7 +299,9 @@
                                 <label for="tempat_lahir_santri"class="required">Tempat Lahir Santri:</label>
                                 <input type="text" class="form-control" id="tempat_lahir_santri"
                                     name="tempat_lahir_santri" required placeholder="Kota lahir"
-                                    onkeydown="validateInput(this, /^[a-zA-Z\s]+$/, 0, 255)">
+                                    onkeydown="validateInput(this, /^[a-zA-Z\s]+$/, 0, 255)"
+                                    onkeyup="validateInput(this, /^[a-zA-Z\s]+$/, 0, 255)"
+                                    onchange="validateInput(this, /^[a-zA-Z\s]+$/, 0, 255)">
                             </div>
 
                             <!-- Kartu Keluarga -->
@@ -360,7 +382,6 @@
                 'form :is(input,textarea,select):is(.is-valid):not([type=hidden])').length
             const persentaseProgress = currentProgress / allProgress * 100
             progressBar.querySelector('.progress-bar').style.width = persentaseProgress + '%';
-            console.log(persentaseProgress)
             if (persentaseProgress >= 100) {
                 document.querySelector('form button[type=submit]').disabled = false
             } else {
@@ -427,7 +448,7 @@
                 }
                 bsValidityToogle(element, 'valid')
             } else {
-                element.value = element.value == '' ? '' : 0
+                element.value = ''
                 sibling.disabled = true
                 bsValidityToogle(element, 'invalid')
             }
@@ -455,7 +476,7 @@
                 returnValue = false
             }
             if (element.value <= 0) {
-                element.value = element.value == '' ? '' : 0
+                element.value = ''
                 returnValue = false
             }
 
@@ -511,7 +532,7 @@
                 element.setCustomValidity('Harap masukkan nomer HP yang valid!')
                 bsValidityToogle(element, 'invalid')
                 if (element.value <= 0) {
-                    element.value = element.value == '' ? '' : 0
+                    element.value = ''
                 }
                 return false; // Tidak sesuai dengan kriteria
             }
