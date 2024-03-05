@@ -9,7 +9,6 @@ class SantriController extends Controller
 {
     public function create()
     {
-        session(['start' => 'down']);
         return view('pages.users.daftar.daftar')->with('htmlStart', [
             'bs-icons' => true
         ]);

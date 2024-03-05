@@ -33,7 +33,7 @@
                 <h2>Informasi</h2>
             </header>
         </aside>
-        <div id="content" class="offset-sm-3 m-4 ">
+        <div id="content" class="offset-sm-3">
             <div class="">
                 <div class="row-cols-sm-1">
                     <div class="col col-auto ms-sm-auto main-form-container" style="">
