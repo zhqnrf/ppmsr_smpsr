@@ -18,8 +18,31 @@ class AuthController extends Controller
     public function signin()
     {
         return view('pages.auth.signin.signin')->with([
-            'pageTitle' => 'Masuk'
+            'pageTitle' => 'Masuk',
+            'htmlStart' => [
+                'swal' => true
+            ]
         ]);
+    }
+
+    public function signinValidation(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
+        }
+
+        return back()->withErrors([
+            'swalToast' => [
+                'icon' => 'error',
+                'title' => 'Username atau password salah!',
+            ]
+        ])->withInput();
     }
 
     /**
@@ -68,5 +91,11 @@ class AuthController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function signout()
+    {
+        Auth::logout();
+        return redirect('/');
     }
 }

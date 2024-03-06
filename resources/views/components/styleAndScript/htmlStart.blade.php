@@ -26,8 +26,14 @@
             integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous">
         </script>
     @endif
+
     @if (($htmlStart['bs-icons'] ?? false) || ($htmlStart['bs-icon'] ?? false))
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    @endif
+
+    @if (($htmlStart['sweetalert'] ?? false) || ($htmlStart['swal'] ?? false))
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @include('components.sweetalert.swal')
     @endif
 @endif
 {{-- *===============* --}}
